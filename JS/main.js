@@ -52,6 +52,15 @@ squares.forEach(square => {
             //Moving piece in matrix array
             matrix[currentX][currentY] = matrix[previousX][prevviousY];
             matrix[previousX][prevviousY] = null;
+
+            //Transform Pawn in a queen when it arrives to the limit
+            if (currentX === 7 || currentX === 0) {
+                if (matrix[currentX][currentY].type === "pawn") {
+                    console.log("Llegó")
+                }
+            }
+            
+
             //Reseting all guides in the chessboard
             unselectSquares();
             unselectPieces();
