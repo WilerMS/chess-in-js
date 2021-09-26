@@ -18,8 +18,8 @@ html {
 }
 
 .chessboard {
-    width: 90vh;
-    height: 90vh;
+    width: 900px;
+    height:900px;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -41,6 +41,15 @@ html {
 
         .square.black {
             background: #779556;
+            
+        }
+
+        .square.blue {
+            background: linear-gradient(162deg, rgba(18,130,255,1) 0%, rgb(44 130 255) 100%);
+        }
+
+        .square.black_gradient {
+            background: linear-gradient(90deg, rgba(23,23,23,1) 0%, rgba(0,0,0,1) 100%);
         }
 
         .square.active:after {
@@ -52,6 +61,7 @@ html {
             opacity: .7;
             cursor: pointer;
             background: linear-gradient(#6b864f, #4a5d36);
+            background: linear-gradient(#3dffffc0, #1d92f1a6);
         }
 
         .piece {
@@ -66,7 +76,7 @@ html {
             cursor: pointer;
         }
             .piece.active {
-                background: #6b6b6b;
+                background: #6b6b6b69;
             }
             
             .piece.white {
@@ -77,5 +87,64 @@ html {
                 color: black;
             }
 
+/* .settings {
+    position: fixed;
+    left: 5px;
+    background: rgb(255, 255, 255);
+    width: 100px;
+    height: 50vh;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
 
+    .settings nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 90%;
+    }
 
+    .settings nav .set_colors {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        height: 50%;
+    }
+
+    .settings nav .set_colors span {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        border-bottom: 1px solid lightgrey;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .settings input[type=color] {
+        background: none;
+        width: 40px;
+        height: 40px;
+    }
+
+    .settings input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+    .settings input[type="color"]::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+    } */
+
+    @media (max-width: 600px) {
+        .chessboard {
+            width: 550px;
+            height: 550px;
+        }
+        .piece {
+            font-size: .3rem;
+        }
+    }
