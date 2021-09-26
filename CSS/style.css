@@ -61,7 +61,7 @@ html {
             opacity: .7;
             cursor: pointer;
             background: linear-gradient(#6b864f, #4a5d36);
-            background: linear-gradient(#3dffffc0, #1d92f1a6);
+            /* background: linear-gradient(#3dffffc0, #1d92f1a6); */
         }
 
         .piece {
@@ -141,10 +141,10 @@ html {
 
     @media (max-width: 600px) {
         .chessboard {
-            width: 550px;
-            height: 550px;
+            width: 450px;
+            height: 450px;
         }
         .piece {
-            font-size: .3rem;
+            font-size: .7rem;
         }
     }
