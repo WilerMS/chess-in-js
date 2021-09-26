@@ -93,80 +93,33 @@ const calculateRookMovements    =   (posX, posY, matrix) => {
                     movements.push((posX).toString() + (posY - i).toString());
                 }
             }
-        }
+        }  
     }
 
     return movements;
 }
 
 const calculateBiShopMovements  =   (posX, posY, matrix) => {
-    let stopXposYpos = false, stopXposYneg = false,
-        stopXnegYpos = false, stopXnegYneg = false;
-    let movements = [];
+    let movements  = [], steps = [1, -1], 
+        validMoves = [[false, false], [false, false]];
 
     for (let i = 1; i < 8; i++) {
-
-        if (!stopXposYpos) {
-            let x = posX+i, y = posY+i;
-            if (x<8 && y<8) {
-                if (matrix[x][y]) {
-                    if (matrix[x][y].user != matrix[posX][posY].user) {
-                        movements.push(x + "" + y);
+        for (let j = 0; j < 2; j++) {
+            for (let z = 0; z < 2; z++) {
+                if (!validMoves[j][z]) {
+                    let x = posX+steps[j]*i, y = posY+steps[z]*i;
+                    if (x<8 && x>=0 && y>=0 && y<8) {
+                        if (matrix[x][y]) {
+                            if (matrix[x][y].user != matrix[posX][posY].user) {
+                                movements.push(x + "" + y);
+                            }
+                            validMoves[j][z] = true;
+                        } else { movements.push(x + "" + y); }
                     }
-                    stopXposYpos = true;
-                } else {
-                    movements.push(x + "" + y);
                 }
             }
         }
-
-        if (!stopXposYneg) {
-            let x = posX+i, y = posY-i;
-            if (x<8 && y>=0) {
-                if (matrix[x][y]) {
-                    if (matrix[x][y].user != matrix[posX][posY].user) {
-                        movements.push(x + "" + y);
-                    }
-                    stopXposYneg = true;
-                } else {
-                    movements.push(x + "" + y);                    
-                }
-            }
-        }
-        
-        if (!stopXnegYpos) {
-            let x = posX-i, y = posY+i;
-            if ((x)>=0 && (y)<8) {
-                if (matrix[x][y]) {
-                    if (matrix[x][y].user != matrix[posX][posY].user) {
-                        movements.push(x + "" + y);
-                    }
-                    stopXnegYpos = true;
-                } else {
-                    movements.push(x + "" + y);                  
-                }
-            }
-        }
-        
-
-        if (!stopXnegYneg) {
-            let x = posX-i, y = posY-i;
-            if (x>=0 && y>=0) {
-                if (matrix[x][y]) {
-                    if (matrix[x][y].user != matrix[posX][posY].user) {
-                        movements.push(x + "" + y);
-                    }
-                    stopXnegYneg = true;
-                } else {
-                    movements.push(x + "" + y);                    
-                }
-            }
-        }
-
-        
-        
     }
-
     return movements;
 }
 
