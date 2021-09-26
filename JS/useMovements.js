@@ -37,65 +37,33 @@ const calculatePawnMovements    =   (posX, posY, matrix) => {
 }
 
 const calculateRookMovements    =   (posX, posY, matrix) => {
-    let movements = [];
-    let stopXpositive = false, stopXnegative = false;
-    let stopYpositive = false, stopYnegative = false;
+    let movements = [], steps = [1, -1], 
+        validMoves = [[false, false], [false, false]];
 
-    for (let i = 1; i < 8; i++) {
+    for (let j = 0; j < 2; j++) {
+        for (let i = 1; i < 8; i++) {
+            let x = posX+(steps[j]*i), y = posY+(steps[j]*i);
+            if (x<8 && x>=0) {
+                if (!validMoves[0][j]) {
+                    if (matrix[x][posY]) {
+                        if (matrix[x][posY].user != matrix[posX][posY].user) {
+                            movements.push((x).toString() + posY.toString());}
+                        validMoves[0][j] = true;
+                    } else { movements.push((x).toString() + posY.toString()); }
+                }
+            }
 
-        if (!stopXpositive) {
-            if (posX + i < 8) {
-                if (matrix[posX + i][posY]) {
-                    if (matrix[posX + i][posY].user != matrix[posX][posY].user) {
-                        movements.push((posX + i).toString() + posY.toString());
-                    }
-                    stopXpositive = true;
-                } else {
-                    movements.push((posX + i).toString() + posY.toString());
+            if (y<8 && y>=0) {
+                if (!validMoves[1][j]) {
+                    if (matrix[posX][y]) {
+                        if (matrix[posX][y].user != matrix[posX][posY].user) {
+                            movements.push((posX).toString() + y.toString());}
+                        validMoves[1][j] = true;
+                    } else { movements.push((posX).toString() + y.toString()); }
                 }
             }
         }
-
-        if (!stopXnegative) {
-            if (posX - i >= 0) {
-                if (matrix[posX - i ][posY]) {
-                    if (matrix[posX - i ][posY].user != matrix[posX][posY].user) {
-                        movements.push((posX - i ).toString() + posY.toString());
-                    }
-                    stopXnegative = true;
-                } else {
-                    movements.push((posX - i ).toString() + posY.toString());
-                }
-            }
-        }
-
-        if (!stopYpositive) {
-            if (posY + i < 8) {
-                if (matrix[posX][posY + i]) {
-                    if (matrix[posX][posY + i].user != matrix[posX][posY].user) {
-                        movements.push((posX).toString() + (posY + i).toString());
-                    }
-                    stopYpositive = true;
-                } else {
-                    movements.push((posX).toString() + (posY + i).toString());
-                }
-            }
-        }
-
-        if (!stopYnegative) {
-            if (posY - i >= 0) {
-                if (matrix[posX][posY - i]) {
-                    if (matrix[posX][posY - i].user != matrix[posX][posY].user) {
-                        movements.push((posX).toString() + (posY - i).toString());
-                    }
-                    stopYnegative = true;
-                } else {
-                    movements.push((posX).toString() + (posY - i).toString());
-                }
-            }
-        }  
     }
-
     return movements;
 }
 
