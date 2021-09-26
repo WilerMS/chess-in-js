@@ -93,91 +93,14 @@ const calculateBiShopMovements  =   (posX, posY, matrix) => {
 
 const calculateKingMovements    =   (posX, posY, matrix) => {
 
-    let movements = [];
-
-    /* Movimiento diagonal */
-        if ((posX+1)<8 && (posY+1)<8) {
-            if (matrix[posX+1][posY+1]) {
-                if (matrix[posX+1][posY+1].user != matrix[posX][posY].user) {
-                    movements.push((posX+1) + "" + (posY+1));
-                }
-            } else {
-                movements.push((posX+1) + "" + (posY+1));                    
-            }
-        }
-
-        if ((posX+1)<8 && (posY-1)>=0) {
-            if (matrix[posX+1][posY-1]) {
-                if (matrix[posX+1][posY-1].user != matrix[posX][posY].user) {
-                    movements.push((posX+1) + "" + (posY-1));
-                }
-            } else {
-                movements.push((posX+1) + "" + (posY-1));                    
-            }
-        }
-
-        if ((posX-1)>=0 && (posY+1)<8) {
-            if (matrix[posX-1][posY+1]) {
-                if (matrix[posX-1][posY+1].user != matrix[posX][posY].user) {
-                    movements.push((posX-1) + "" + (posY+1));
-                }
-            } else {
-                movements.push((posX-1) + "" + (posY+1));                    
-            }
-        }
-        
-        if ((posX-1)>=0 && (posY-1)>=0) {
-            if (matrix[posX-1][posY-1]) {
-                if (matrix[posX-1][posY-1].user != matrix[posX][posY].user) {
-                    movements.push((posX-1) + "" + (posY-1));
-                }
-            } else {
-                movements.push((posX-1) + "" + (posY-1));                    
-            }
-        }
-
-    /* Movimiento recto */
-        if (posX+1 < 8) {
-            if (matrix[posX+1][posY]) {
-                if (matrix[posX+1][posY].user != matrix[posX][posY].user) {
-                    movements.push((posX+1).toString() + posY.toString());
-                }
-            } else {
-                movements.push((posX+1).toString() + posY.toString());
-            }
-        }
-
-        if (posX-1 >= 0) {
-            if (matrix[posX-1][posY]) {
-                if (matrix[posX-1][posY].user != matrix[posX][posY].user) {
-                    movements.push((posX-1).toString() + posY.toString());
-                }
-            } else {
-                movements.push((posX - 1).toString() + posY.toString());
-            }
-        }
-
-        if (posY + 1 < 8) {
-            if (matrix[posX][posY+1]) {
-                if (matrix[posX][posY+1].user != matrix[posX][posY].user) {
-                    movements.push((posX).toString() + (posY+1).toString());
-                }
-            } else {
-                movements.push((posX).toString() + (posY+1).toString());
-            }
-        }
-
-        if (posY-1 >=0) {
-            if (matrix[posX][posY-1]) {
-                if (matrix[posX][posY-1].user != matrix[posX][posY].user) {
-                    movements.push((posX).toString() + (posY-1).toString());
-                }
-            } else {
-                movements.push((posX).toString() + (posY-1).toString());
-            }
-        }
-    
-    /* FINAL Movimiento recto */
+    let movements = [ ...calculateBiShopMovements(posX, posY, matrix),
+                      ...calculateRookMovements(posX, posY, matrix) ];
+    let possibleMoves = [
+        (posX+1)+""+(posY+1), (posX+1)+""+(posY-1), (posX-1)+""+(posY+1), 
+        (posX-1)+""+(posY-1), (posX+1)+""+( posY ), ( posX )+""+(posY+1),
+        (posX-1)+""+( posY ), ( posX )+""+(posY-1)
+    ];
+    movements = movements.filter(move => possibleMoves.includes(move));
     return movements;
 }
 
