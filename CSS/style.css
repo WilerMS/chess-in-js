@@ -1,3 +1,33 @@
+/*  
+:root {
+    --app-bg-color: gray;
+    --chessboard-bg-color: #779556;
+    --chessboard-shadow-colorr: rgba(0, 0, 0, 0.233);
+    --chessboard-container-border-color: #ebecd0;
+    --square-white-bg-color: #ebecd0; 
+    --square-black-bg-color: #779556;
+    --square-active-after-bg-color: linear-gradient(#6b864f, #4a5d36);
+    --piece-text-shadow-color: #0000006b;
+    --piece-active-bg-color: #6b6b6b69;
+    --piece-white-icon-color: white;
+    --piece-black-icon-color: black;
+}
+*/
+
+:root {
+    --app-bg-color: #4a526c;
+    --chessboard-bg-color: #2054b4;
+    --chessboard-shadow-colorr: rgba(0, 0, 0, 0.233);
+    --chessboard-container-border-color: #d0e9ec;
+    --square-white-bg-color: #d0e9ec; 
+    --square-black-bg-color: #2054b4;
+    --square-active-after-bg-color: linear-gradient(#2e9ddda2, #25bfeea2);
+    --piece-text-shadow-color: #0000006b;
+    --piece-active-bg-color: #6b6b6b69;
+    --piece-white-icon-color: white;
+    --piece-black-icon-color: black; 
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -11,45 +41,56 @@ html {
 .App-container {
     width: 100vw;
     height: 100vh;
-    background-color: gray;
+    background-color: var(--app-bg-color);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .chessboard {
+    background: var(--chessboard-bg-color);
     width: 900px;
     height:900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px var(--chessboard-shadow-colorr);
+}
+
+.container-vertical {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+}
+
+.chessboard-container {
+    border: 5px solid var(--chessboard-container-border-color);
+    height: 90%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.233);
+    z-index: 1;
 }
 
     .square {
         position: relative;
-        background-color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
     }
         .square.white {
-            background: #ebecd0;
+            background: var(--square-white-bg-color);
         }
 
         .square.black {
-            background: #779556;
-            
-        }
-
-        .square.blue {
-            background: linear-gradient(162deg, rgba(18,130,255,1) 0%, rgb(44 130 255) 100%);
-        }
-
-        .square.black_gradient {
-            background: linear-gradient(90deg, rgba(23,23,23,1) 0%, rgba(0,0,0,1) 100%);
+            background: var(--square-black-bg-color);
         }
 
         .square.active:after {
@@ -60,8 +101,7 @@ html {
             border-radius: 50%;
             opacity: .7;
             cursor: pointer;
-            background: linear-gradient(#6b864f, #4a5d36);
-            /* background: linear-gradient(#3dffffc0, #1d92f1a6); */
+            background: var(--square-active-after-bg-color)
         }
 
         .piece {
@@ -70,21 +110,20 @@ html {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white; 
-            text-shadow: 0 0 5px #0000006b;
+            text-shadow: 0 0 5px var(--piece-text-shadow-color);
             font-size: 1rem;
             cursor: pointer;
         }
             .piece.active {
-                background: #6b6b6b69;
+                background: var(--piece-active-bg-color);
             }
             
             .piece.white {
-                color: white;
+                color: var(--piece-white-icon-color);
             }
 
             .piece.black {
-                color: black;
+                color: var(--piece-black-icon-color);
             }
 
 /* .settings {
