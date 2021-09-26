@@ -261,99 +261,20 @@ const calculateKingMovements    =   (posX, posY, matrix) => {
 }
 
 const calculateKnightMovements  =   (posX, posY, matrix) => {
-
-    let movements = [];
-    let horizontalShortMoves = [1, -1], horizontalLongMoves = [2, -2];
-    let verticalShortMoves = [1, -1], verticalLongMoves = [2, -2];
-    
-    //TOP LONG, RIGH SHORT
-    if (posX-2 >= 0 && posY+1<8) {
-        if (matrix[posX-2][posY+1]) {
-            if (matrix[posX-2][posY+1].user != matrix[posX][posY].user) {
-                movements.push((posX-2) + "" + (posY+1));
+    let movements = [], steps = [1, 2, -1, -2];
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (posX+steps[i]>=0 && posX+steps[i]<8 && posY+steps[j]>=0 && posY+steps[j]<8) {
+                if (![0, 2, -2, 4, -4].includes(steps[i] + steps[j])) {
+                    if (matrix[posX+steps[i]][posY+steps[j]]) {
+                        if (matrix[posX+steps[i]][posY+steps[j]].user != matrix[posX][posY].user) {
+                            movements.push((posX+steps[i]) + "" + (posY+steps[j]));
+                        }
+                    } else { movements.push((posX+steps[i]) + "" + (posY+steps[j])); }
+                }
             }
-        } else {
-            movements.push((posX-2) + "" + (posY+1));
         }
     }
-    
-    //TOP LONG, LEFT SHORT
-    if (posX-2 >= 0 && posY-1>=0) {
-        if (matrix[posX-2][posY-1]) {
-            if (matrix[posX-2][posY-1].user != matrix[posX][posY].user) {
-                movements.push((posX-2) + "" + (posY-1));
-            }
-        } else {
-            movements.push((posX-2) + "" + (posY-1));
-        }
-    }
-
-    //TOP SHORT, RIGHT LONG
-    if (posX-1 >= 0 && posY+2<8) {
-        if (matrix[posX-1][posY+2]) {
-            if (matrix[posX-1][posY+2].user != matrix[posX][posY].user) {
-                movements.push((posX-1) + "" + (posY+2));
-            }
-        } else {
-            movements.push((posX-1) + "" + (posY+2));
-        }
-    }
-
-    //TOP SHORT, LEFT LONG
-    if (posX-1 >= 0 && posY-2>=0) {
-        if (matrix[posX-1][posY-2]) {
-            if (matrix[posX-1][posY-2].user != matrix[posX][posY].user) {
-                movements.push((posX-1) + "" + (posY-2));
-            }
-        } else {
-            movements.push((posX-1) + "" + (posY-2));
-        }
-    }
-
-    //BOTTOM LONG, RIGH SHORT
-    if (posX+2<8 && posY+1<8) {
-        if (matrix[posX+2][posY+1]) {
-            if (matrix[posX+2][posY+1].user != matrix[posX][posY].user) {
-                movements.push((posX+2) + "" + (posY+1));
-            }
-        } else {
-            movements.push((posX+2) + "" + (posY+1));
-        }
-    }
-
-    //BOTTOM LONG, LEFT SHORT
-    if (posX+2<8 && posY-1>=0) {
-        if (matrix[posX+2][posY-1]) {
-            if (matrix[posX+2][posY-1].user != matrix[posX][posY].user) {
-                movements.push((posX+2) + "" + (posY-1));
-            }
-        } else {
-            movements.push((posX+2) + "" + (posY-1));
-        }
-    }
-
-    //BOTTOM SHORT, RIGHT LONG
-    if (posX+1<8 && posY+2<8) {
-        if (matrix[posX+1][posY+2]) {
-            if (matrix[posX+1][posY+2].user != matrix[posX][posY].user) {
-                movements.push((posX+1) + "" + (posY+2));
-            }
-        } else {
-            movements.push((posX+1) + "" + (posY+2));
-        }
-    }
-
-    //BOTTOM SHORT, LEFT LONG
-    if (posX+1<8 && posY-2>=0) {
-        if (matrix[posX+1][posY-2]) {
-            if (matrix[posX+1][posY-2].user != matrix[posX][posY].user) {
-                movements.push((posX+1) + "" + (posY-2));
-            }
-        } else {
-            movements.push((posX+1) + "" + (posY-2));
-        }
-    }
-
     return movements;
 }
 
