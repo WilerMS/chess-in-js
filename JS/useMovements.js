@@ -92,7 +92,6 @@ const calculateBiShopMovements  =   (posX, posY, matrix) => {
 }
 
 const calculateKingMovements    =   (posX, posY, matrix) => {
-
     let movements = [ ...calculateBiShopMovements(posX, posY, matrix),
                       ...calculateRookMovements(posX, posY, matrix) ];
     let possibleMoves = [
@@ -122,41 +121,27 @@ const calculateKnightMovements  =   (posX, posY, matrix) => {
     return movements;
 }
 
+const calculateQueenMovements   =   (posX, posY, matrix) => {
+    return [...calculateRookMovements(posX, posY, matrix),
+            ...calculateBiShopMovements(posX, posY, matrix)];
+}
+
 const calculateMovements = (index, matrix) => {
     // Getting indexes from clicked square
     let [x, y] = index.split("");
     let posX = parseInt(x), posY = parseInt(y);
-    let piece = matrix[posX][posY]; //Piecen in that index
-    let movements = [];
-    
-    switch (piece.type) {
-        case 'pawn':
-            movements = calculatePawnMovements(posX, posY, matrix);
-            break;
+    let {type} = matrix[posX][posY]; //Piecen in that index
 
-        case 'rook':
-            movements = calculateRookMovements(posX, posY, matrix);
-            break;
-        
-        case 'bishop':
-            movements = calculateBiShopMovements(posX, posY, matrix);
-            break;
-
-        case 'queen':
-            movements.push(...calculateRookMovements(posX, posY, matrix));
-            movements.push(...calculateBiShopMovements(posX, posY, matrix));
-            break;
+    let PiecesMovements = {
+        pawn:   calculatePawnMovements(posX, posY, matrix),
+        rook:   calculateRookMovements(posX, posY, matrix),
+        bishop: calculateBiShopMovements(posX, posY, matrix),
+        king:   calculateKingMovements(posX, posY, matrix),
+        knight: calculateKnightMovements(posX, posY, matrix),
+        queen:  calculateQueenMovements(posX, posY, matrix)
+    };
     
-        case 'king':
-            movements = calculateKingMovements(posX, posY, matrix);
-            break;
-
-        case 'knight':
-            movements = calculateKnightMovements(posX, posY, matrix);
-            break;
-    }
-    
-    return movements;
+    return PiecesMovements[type];
 }
 
 export {calculateMovements};
