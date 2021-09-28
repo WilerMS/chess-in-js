@@ -11,6 +11,6 @@ const setSecondaryColor = (e) => {
 }
 
 
-primaryColorInput.addEventListener('change', setPrimaryColor);
-secondaryColorInput.addEventListener('change', setSecondaryColor);
+primaryColorInput.addEventListener('input', setPrimaryColor);
+secondaryColorInput.addEventListener('input', setSecondaryColor);
 
