@@ -16,16 +16,14 @@
 
 :root {
     --app-bg-color: #4a526c;
-    --chessboard-bg-color: #2054b4;
+    --chessboard-primary-color: #2054b4;
+    --chessboard-secondary-color: #d0e9ec;
     --chessboard-shadow-colorr: rgba(0, 0, 0, 0.233);
-    --chessboard-container-border-color: #d0e9ec;
-    --square-white-bg-color: #d0e9ec; 
-    --square-black-bg-color: #2054b4;
     --square-active-after-bg-color: linear-gradient(#2e9ddda2, #25bfeea2);
-    --piece-text-shadow-color: #0000006b;
-    --piece-active-bg-color: #6b6b6b69;
     --piece-white-icon-color: white;
     --piece-black-icon-color: black; 
+    --piece-text-shadow: 0 0 5px #0000006b;
+    --piece-active-bg-color: #6b6b6b69;
 }
 
 * {
@@ -48,7 +46,7 @@ html {
 }
 
 .chessboard {
-    background: var(--chessboard-bg-color);
+    background: var(--chessboard-primary-color);
     width: 900px;
     height:900px;
     display: flex;
@@ -68,7 +66,7 @@ html {
 }
 
 .chessboard-container {
-    border: 5px solid var(--chessboard-container-border-color);
+    border: 5px solid var(--chessboard-secondary-color);
     height: 90%;
     width: 100%;
     display: grid;
@@ -86,11 +84,11 @@ html {
         justify-content: center;
     }
         .square.white {
-            background: var(--square-white-bg-color);
+            background: var(--chessboard-secondary-color);
         }
 
         .square.black {
-            background: var(--square-black-bg-color);
+            background: var(--chessboard-primary-color);
         }
 
         .square.active:after {
@@ -110,7 +108,7 @@ html {
             display: flex;
             align-items: center;
             justify-content: center;
-            text-shadow: 0 0 5px var(--piece-text-shadow-color);
+            text-shadow: var(--piece-text-shadow);
             font-size: 1rem;
             cursor: pointer;
         }
@@ -125,58 +123,6 @@ html {
             .piece.black {
                 color: var(--piece-black-icon-color);
             }
-
-/* .settings {
-    position: fixed;
-    left: 5px;
-    background: rgb(255, 255, 255);
-    width: 100px;
-    height: 50vh;
-    overflow: hidden;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-}
-
-    .settings nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        height: 90%;
-    }
-
-    .settings nav .set_colors {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        height: 50%;
-    }
-
-    .settings nav .set_colors span {
-        width: 100%;
-        height: 40px;
-        text-align: center;
-        border-bottom: 1px solid lightgrey;
-        font-size: 22px;
-        margin-bottom: 5px;
-    }
-
-    .settings input[type=color] {
-        background: none;
-        width: 40px;
-        height: 40px;
-    }
-
-    .settings input[type="color"]::-webkit-color-swatch-wrapper {
-        padding: 0;
-    }
-    .settings input[type="color"]::-webkit-color-swatch {
-        border: none;
-        border-radius: 50%;
-    } */
 
     @media (max-width: 600px) {
         .chessboard {
