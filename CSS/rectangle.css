@@ -48,3 +48,9 @@
 .chessboard .rectangle-right .guide {
     height: 100%;
 }
+
+@media (max-width: 600px) {
+    .guide {
+        font-size: .15rem !important;
+    }
+}

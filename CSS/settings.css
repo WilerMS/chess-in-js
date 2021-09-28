@@ -54,3 +54,36 @@
         border: 1px solid rgba(0, 0, 0, 0.363) ;
         border-radius: 50%;
     }
+
+
+    @media (max-width: 950px) {
+        .settings {
+            left: initial;
+            bottom: 5px;
+            width: 80vw;
+            height: 80px;
+        }
+        .settings nav {
+            width: 90%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        .settings nav .set_colors {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            height: 100%;
+            margin-left: 20px;
+        }
+
+        .settings nav .set_colors > span {
+            display: none;
+        }
+
+        .settings nav .set_colors > div {
+            display: flex;
+            align-items: center;
+        }
+        
+    }
