@@ -123,13 +123,37 @@ html {
             .piece.black {
                 color: var(--piece-black-icon-color);
             }
+    
 
-    @media (max-width: 600px) {
+    @media (max-width: 1300px) {
         .chessboard {
-            width: 450px;
-            height: 450px;
+            width: 700px;
+            height: 700px;
         }
         .piece {
             font-size: .7rem;
+        }
+    }
+
+    @media (max-width: 950px) {
+        .chessboard {
+            width: 500px;
+            height: 500px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .chessboard {
+            width: 350px;
+            height: 350px;
+        }
+        .piece {
+            font-size: .4rem;
+        }
+        .guide {
+            font-size: .3rem !important;
+        }
+        .chessboard-container {
+            border: 3px solid var(--chessboard-secondary-color);
         }
     }
