@@ -1,0 +1,56 @@
+.settings {
+    position: fixed;
+    left: 5px;
+    background: rgb(255, 255, 255);
+    width: 100px;
+    height: 50vh;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+    .settings nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 90%;
+    }
+
+    .settings nav .set_colors {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        height: 50%;
+    }
+
+    .settings nav .set_colors > span {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        border-bottom: 1px solid lightgrey;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .settings .set_colors div span {
+        font-size: .4rem;
+        
+    }
+
+    .settings input[type=color] {
+        background: none;
+        width: 40px;
+        height: 40px;
+    }
+
+    .settings input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+    .settings input[type="color"]::-webkit-color-swatch {
+        border: 1px solid rgba(0, 0, 0, 0.363) ;
+        border-radius: 50%;
+    }

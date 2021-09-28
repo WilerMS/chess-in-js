@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/rectangle.css">
+    <link rel="stylesheet" href="CSS/settings.css">
     <title>Juego de Ajedrez</title>
 </head>
 <body>
     <div class="App">
         <div class="App-container">
             <div class="chessboard">
-
                 <div class="rectangle-left">
                     <div class="guide">1</div>
                     <div class="guide">2</div>
@@ -138,22 +138,25 @@
                     <div class="guide">7</div>
                     <div class="guide">8</div>
                 </div>
-                
             </div>
-
-                
-
-            <!-- <div class="settings">
+           <div class="settings">
                 <nav>
                     <div class="set_colors">
-                        <span>Colors</span>    
-                        <input type="color" id="">
-                        <input type="color" id="">
+                        <span>Colors</span>
+                        <div class="primary">
+                            <!-- <span>Primary</span> -->
+                            <input type="color" value="#2054b4" id="primary_color_btn">
+                        </div>    
+                        <div class="secondary">
+                            <!-- <span>Primary</span> -->
+                            <input type="color" value="#d0e9ec" id="secondary_color_btn">
+                        </div>
                     </div>
                 </nav>
-            </div> -->
+            </div>
         </div>
     </div>
     <script src="JS/main.js" type="module"></script>
+    <script src="JS/settings.js"></script>
 </body>
 </html>
