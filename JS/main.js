@@ -29,7 +29,7 @@ pieces.forEach( piece => {
 
 squares.forEach(square => {
     square.addEventListener('click', function() {
-        if (square.classList.contains('active')) {
+        if (this.classList.contains('active')) {
             let piece = document.querySelector(`#${currentPiece.id}`);
             let [previousX, prevviousY] = getPosition(piece.parentElement.dataset.position),
                 [currentX,  currentY]   = getPosition(this.dataset.position);
@@ -54,10 +54,8 @@ squares.forEach(square => {
             matrix[previousX][prevviousY] = null;
 
             //Transform Pawn in a queen when it arrives to the limit
-            if (currentX === 7 || currentX === 0) {
-                if (matrix[currentX][currentY].type === "pawn") {
-                    console.log("Llegó")
-                }
+            if ((currentX === 7 || currentX === 0) && matrix[currentX][currentY].type === "pawn") {
+                console.log("Llegó")
             }
             
 

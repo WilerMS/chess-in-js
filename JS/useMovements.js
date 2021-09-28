@@ -13,7 +13,7 @@ const calculatePawnMovements    =   (posX, posY, matrix) => {
     }
     
     for (let i = 0; i < 2; i++) {
-        if (posY+diagMoves[i] >= 0 && posY+diagMoves[i] <= 7) {
+        if (posY+diagMoves[i] >= 0 && posY+diagMoves[i] <= 7 && posX+steps[0]>=0 && posX+steps[0]<8) {
             if (matrix[posX+steps[0]][posY+diagMoves[i]]) {
                 if (matrix[posX+steps[0]][posY+diagMoves[i]].user != matrix[posX][posY].user) {
                     movements.push((posX+steps[0]).toString() + (posY+diagMoves[i]).toString());
