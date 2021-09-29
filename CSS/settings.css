@@ -1,7 +1,7 @@
 .settings {
     position: fixed;
     left: 5px;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.233);
     width: 100px;
     height: 50vh;
     overflow: hidden;
